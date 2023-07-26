@@ -1,8 +1,9 @@
 import "bootstrap/dist/css/bootstrap.css"
 import { useFormik } from "formik"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 import axios from "axios"
-function Add() {
+function Update() {
+    const {id}=useParams()
     const navigate=useNavigate()
     const formAdd = useFormik({
         initialValues: {
@@ -16,7 +17,7 @@ function Add() {
                 price:values.price,
                 description:values.description,
             }
-            axios.post('http://localhost:8080/tuors',data).then(res=>{
+            axios.put(`http://localhost:8080/tuors/${id}`,data).then(res=>{
                 navigate('/list')
             })
         }
@@ -62,4 +63,4 @@ function Add() {
         </>
     )
 }
-export default Add
+export default Update

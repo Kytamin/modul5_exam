@@ -10,7 +10,7 @@ function Detail() {
         axios.get(`http://localhost:8080/tuors/${id}`).then((res) => {
             setDetail(res.data);
         });
-    }, {});
+    }, {detail});
     return (
         <>
         <h1>CHi tiết Tour</h1>
